@@ -21,5 +21,8 @@ io.on("connection", socket => {
 		} else {
 			io.send(m);
 		}
-	})
+	});
+	socket.on("disconnect", () => {
+		io.send(socket.name + " leaved.");
+	});
 });
