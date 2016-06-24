@@ -12,4 +12,14 @@ function home(req, res) {
 
 io.on("connection", socket => {
 	socket.send("Welcome to our chat system");
+	socket.on("message", m => {
+		var data = m.split("=");
+
+		if (data[0] == "@name") {
+			socket.name = data[1];
+			io.send(data[1] + " joined.");
+		} else {
+			io.send(m);
+		}
+	})
 });

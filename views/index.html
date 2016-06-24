@@ -14,7 +14,7 @@
 		</style>
 	</head>
 	<body>
-		<form>
+		<form action="javascript:send()">
 			<textarea class="form-control" rows="5"></textarea>
 			<div class="input-group">
 				<input class="form-control" id="message" />
@@ -34,7 +34,12 @@
 			socket.on("message", m => {
 				var t = $("textarea").val();
 				$("textarea").val(t + m + "\n");
-			})
+			});
+			function send() {
+				var m = $("#message").val();
+				$("#message").val("");
+				socket.send(m);
+			}
 		</script>
 
 	</body>
