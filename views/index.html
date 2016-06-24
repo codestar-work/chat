@@ -28,5 +28,14 @@
 		<script src="https://icode.run/jquery.js"></script>
 		<script src="https://icode.run/bootstrap/js/bootstrap.min.js"></script>
 
+		<script src="/socket.io/socket.io.js"></script>
+		<script>
+			var socket = io.connect("/");
+			socket.on("message", m => {
+				var t = $("textarea").val();
+				$("textarea").val(t + m + "\n");
+			})
+		</script>
+
 	</body>
 </html>
