@@ -1,19 +1,16 @@
-postMessage("Subtask started");
-
-/*
+postMessage("Subtask ready");
 onmessage = function(e) {
-	e.data;
-}
-*/
+	postMessage("Subtask started");
+	var n = e.data;
 
-var r = [ ];
-var n = 5000000000;
-for (var i = 1; i <= n; i++) {
-	if (n % i == 0) {
-		r.push(i);
+	var r = [ ];
+	for (var i = 1; i <= n; i++) {
+		if (n % i == 0) {
+			r.push(i);
+		}
 	}
-}
 
-postMessage(r);
-postMessage("Subtask stopped");
-close();
+	postMessage(r);
+	postMessage("Subtask stopped");
+	close();
+}

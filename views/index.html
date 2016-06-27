@@ -90,6 +90,7 @@
 
 		<script>
 			var w = new Worker("divider.js");
+			w.postMessage(3000000000);
 			w.onmessage = function(e) {
 				console.log(e.data);
 			}
