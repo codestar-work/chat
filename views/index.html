@@ -17,6 +17,7 @@
 				border-radius: 4px;
 				margin-bottom: 10px;
 				overflow: auto;
+				padding: 4px 8px;
 			}
 		</style>
 	</head>
@@ -85,9 +86,8 @@
 				var lng = p.coords.longitude;
 				var s = "https://google.com/maps/@" +
 						lat + "," + lng + ",18z";
-				// var t = "<a href='" + s  + "'>Location</a>";
-				console.log(s);
-				socket.send(s);
+				var t = "<a href='" + s  + "' target='_blank'>Location</a>";
+				socket.send(t);
 			}
 
 			function showPositionError(e) {
