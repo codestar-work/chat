@@ -52,6 +52,14 @@
 						(showPosition, showPositionError, {
 							enableHighAccuracy: true
 						});
+				} else if (m.indexOf("@tel") == 0) {
+					var d = m.split(":");
+					var s = "<a href='tel:" + d[1] + "'>Call</a>";
+					socket.send(s);
+				} else if (m.indexOf("@sms") == 0) {
+					var d = m.split(":");
+					var s = "<a href='sms:" + d[1] + "'>SMS</a>";
+					socket.send(s);					
 				} else {
 					socket.send(m);
 				}
