@@ -3,6 +3,7 @@ var app     = express();
 var io      = require("socket.io")();
 
 app.engine("html", require("ejs").renderFile);
+app.use(express.static('public'));
 app.get("/", home);
 io.listen(app.listen(4000));
 
