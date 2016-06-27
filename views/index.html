@@ -40,6 +40,31 @@
 				$("#message").val("");
 				socket.send(m);
 			}
+			$(main);
+			function main() {
+				$("#message").keydown(start);
+				$("#message").keyup(stop);
+			}
+
+			var KEY = 16; // Shift Key
+			var sr = new webkitSpeechRecognition();
+			sr.lang = "th";
+			sr.onresult = function(e) {
+				$('#message').val(e.results[0][0].transcript);
+				send();
+			}
+			function start(e) {
+				if (e.which == KEY) {
+					sr.start();
+				}
+			}
+
+			function stop(e) {
+				if (e.which == KEY) {
+					sr.stop();
+				}
+			}
+
 		</script>
 
 	</body>
