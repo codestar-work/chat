@@ -11,11 +11,18 @@
 			textarea {
 				margin-bottom: 10px;
 			}
+			#chat {
+				background: whitesmoke;
+				height: 200px;
+				border-radius: 4px;
+				margin-bottom: 10px;
+				overflow: auto;
+			}
 		</style>
 	</head>
 	<body>
 		<form action="javascript:send()">
-			<textarea class="form-control" rows="5"></textarea>
+			<div id='chat'></div>
 			<div class="input-group">
 				<input class="form-control" id="message" />
 				<span class="input-group-btn">
@@ -32,8 +39,9 @@
 		<script>
 			var socket = io.connect("/");
 			socket.on("message", m => {
-				var t = $("textarea").val();
-				$("textarea").val(t + m + "\n");
+				// var t = $("textarea").val();
+				// $("textarea").val(t + m + "\n");
+				$("#chat").append(m + "<br>");
 			});
 			function send() {
 				var m = $("#message").val();
